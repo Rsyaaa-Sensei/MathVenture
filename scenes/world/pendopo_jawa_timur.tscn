@@ -1,0 +1,229 @@
+[gd_scene format=3 uid="uid://cpendopojatim"]
+
+[ext_resource type="Script" uid="uid://f4adqdrax5lw" path="res://script/world/pendopo_jawa_timur.gd" id="1_room"]
+[ext_resource type="Texture2D" uid="uid://b7ib81gmxfrq4" path="res://assets/images/buildings/background level 4.jpeg" id="2_bg"]
+[ext_resource type="Script" uid="uid://pg60epj5evuq" path="res://script/peti/chest_interaction.gd" id="3_chest"]
+[ext_resource type="Script" uid="uid://du4fkappxd3k4" path="res://script/control/d_pad.gd" id="4_dpad"]
+[ext_resource type="PackedScene" uid="uid://c130x6wc2j5xd" path="res://scenes/npc/npc.tscn" id="5_npc"]
+[ext_resource type="SpriteFrames" uid="uid://bwgip6gs5bm0q" path="res://assets/images/player/mbok_ratih_frames.tres" id="6_mbok"]
+[ext_resource type="PackedScene" uid="uid://c2mhomnosc441" path="res://scenes/player/player_arka.tscn" id="7_player"]
+[ext_resource type="Texture2D" uid="uid://4vokev6vdw8t" path="res://assets/images/buildings/level4_trans.png" id="8_i0l78"]
+[ext_resource type="Script" path="res://script/ui/quest_panel.gd" id="9_quest"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wallh"]
+size = Vector2(1040, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wallv"]
+size = Vector2(20, 1040)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8av1"]
+radius = 122.0041
+
+[node name="PendopoJawaTimur" type="Node2D" unique_id=1247471001]
+script = ExtResource("1_room")
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=1010337052]
+texture = ExtResource("2_bg")
+
+[node name="MapBoundaries" type="StaticBody2D" parent="." unique_id=1344398120]
+
+[node name="TopWall" type="CollisionShape2D" parent="MapBoundaries" unique_id=1094210557]
+position = Vector2(0, -500)
+shape = SubResource("RectangleShape2D_wallh")
+
+[node name="BottomWall" type="CollisionShape2D" parent="MapBoundaries" unique_id=2039371733]
+position = Vector2(0, 500)
+shape = SubResource("RectangleShape2D_wallh")
+
+[node name="LeftWall" type="CollisionShape2D" parent="MapBoundaries" unique_id=754780487]
+position = Vector2(-500, 0)
+shape = SubResource("RectangleShape2D_wallv")
+
+[node name="RightWall" type="CollisionShape2D" parent="MapBoundaries" unique_id=1508696711]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_wallv")
+
+[node name="KueInteraction" type="Area2D" parent="." unique_id=1439025418]
+position = Vector2(300, 300)
+script = ExtResource("3_chest")
+scene_3d = "res://scenes/peti/limas_3d.tscn"
+button_text = "Periksa Kue Iwel-iwel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KueInteraction" unique_id=1140879502]
+position = Vector2(-51, 61)
+shape = SubResource("CircleShape2D_q8av1")
+
+[node name="InteractionUI" type="CanvasLayer" parent="." unique_id=419657477]
+
+[node name="TalkButton" type="Button" parent="InteractionUI" unique_id=346558779]
+custom_minimum_size = Vector2(240, 72)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -130.0
+offset_right = -30.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Bicara"
+metadata/_edit_use_anchors_ = true
+
+[node name="ChestButton" type="Button" parent="InteractionUI" unique_id=1395260050]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 72)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -130.0
+offset_right = 310.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Periksa Kue Iwel-iwel"
+metadata/_edit_use_anchors_ = true
+
+[node name="MapButton" type="Button" parent="InteractionUI" unique_id=227717502]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -190.0
+offset_top = 16.0
+offset_right = -20.0
+offset_bottom = 68.0
+grow_horizontal = 0
+text = "Peta Level"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuestPanel" type="PanelContainer" parent="InteractionUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -350.0
+offset_top = 76.0
+offset_right = -20.0
+offset_bottom = 186.0
+grow_horizontal = 0
+script = ExtResource("9_quest")
+scene_id = "level4"
+
+[node name="VBox" type="VBoxContainer" parent="InteractionUI/QuestPanel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HeaderLabel" type="Label" parent="InteractionUI/QuestPanel/VBox"]
+layout_mode = 2
+text = "OBJEKTIF MISI"
+
+[node name="ObjectivesLabel" type="Label" parent="InteractionUI/QuestPanel/VBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "[ ] 1. Bicara dengan Mbok Ratih di dekat meja kanan
+[ ] 2. Dekati meja kue lalu tekan \"Periksa Kue Iwel-iwel\""
+autowrap_mode = 3
+
+[node name="DPad" type="Control" parent="InteractionUI" unique_id=1890360447]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -240.0
+offset_right = 270.0
+grow_vertical = 0
+script = ExtResource("4_dpad")
+
+[node name="Up" type="Button" parent="InteractionUI/DPad" unique_id=1387402715]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = 80.0
+offset_right = 160.0
+offset_bottom = 80.0
+focus_mode = 0
+mouse_filter = 2
+text = "^"
+
+[node name="Down" type="Button" parent="InteractionUI/DPad" unique_id=1732074223]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = 80.0
+offset_top = 160.0
+offset_right = 160.0
+offset_bottom = 240.0
+focus_mode = 0
+mouse_filter = 2
+text = "v"
+
+[node name="Left" type="Button" parent="InteractionUI/DPad" unique_id=1999396060]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_top = 80.0
+offset_right = 80.0
+offset_bottom = 160.0
+focus_mode = 0
+mouse_filter = 2
+text = "<"
+
+[node name="Right" type="Button" parent="InteractionUI/DPad" unique_id=1141534643]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 80.0
+offset_right = 240.0
+offset_bottom = 160.0
+focus_mode = 0
+mouse_filter = 2
+text = ">"
+
+[node name="ScreenFade" type="ColorRect" parent="InteractionUI" unique_id=1217562176]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="YSort" type="Node2D" parent="." unique_id=1895994238]
+y_sort_enabled = true
+
+[node name="NPC" parent="YSort" unique_id=1001565129 instance=ExtResource("5_npc")]
+y_sort_enabled = true
+position = Vector2(56.999996, 445)
+scale = Vector2(0.2, 0.2)
+npc_name = "Mbok Ratih"
+player_name = "Arka"
+sprite_frames = ExtResource("6_mbok")
+lines = Array[String](["Mbok Ratih|Sugeng rawuh, Nak Arka! Selamat datang di bumi Jawa Timur. Menjelang tradisi sedekah bumi hari ini, saya sedang membuat Kue Iwel-iwel, kue tradisional legit kesukaan warga. Tapi, saya harus menghitung takaran adonan dan luas pembungkus daun pisangnya agar bentuk limasnya sempurna dan tidak ada bahan yang terbuang.", "Arka|Wah, aromanya harum sekali, Mbok! Bentuk bungkusnya unik, mengerucut ke atas. Biar saya bantu menganalisis bentuk geometris dan volumenya dengan konsep matematika!", "Mbok Ratih|Matur nuwun, Nak! Dekati kue Iwel-iwel di meja itu dan amati bagian-bagiannya, ya. Dari situ kamu bisa menyelidiki rahasia bangun limas."])
+wander_radius = 80.0
+
+[node name="Player" parent="YSort" unique_id=1365754165 instance=ExtResource("7_player")]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(-174, 419.00003)
+scale = Vector2(1.5, 1.5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2065870189]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=320382059]
+position = Vector2(-5.865097e-05, 6.365776e-05)
+scale = Vector2(1.6331736, 1.6331738)
+texture = ExtResource("8_i0l78")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=188108327]
+position = Vector2(-5.865097e-05, 6.365776e-05)
+scale = Vector2(1.6331736, 1.6331738)
+polygon = PackedVector2Array(5, -302.3, -1.5, -306.2, -3, -305.4, -3, -304.2, -4.200012, -303, -5.5, -303, -10.5, -290, -13.100006, -290, -16.700012, -286.5, -18.299988, -287, -22.100006, -287, -28, -281.1, -28, -279.8, -31.799988, -279, -36, -283.2, -36, -285.9, -39.799988, -284, -42.200012, -284, -46.200012, -279, -48.100006, -279, -47, -266.2, -48, -265.1, -48, -260, -73.3, -224, -74.399994, -224, -77, -218.9, -77, -217.2, -82, -212.1, -82, -209, -113.600006, -163.7, -116.899994, -167, -121.2, -167, -124.2, -163, -126.2, -163, -125.100006, -155, -127, -155, -127, -153.6, -185, -135.6, -185, -135, -188.8, -135, -190.7, -138, -193.2, -138, -200, -129, -286, -100.600006, -289, -101.600006, -289, -103, -295.3, -103, -297.2, -100, -298.4, -100, -300, -96.899994, -300, -92, -290, -79, -290, -77.5, -261.8, -65, -261, -65, -260, 5.5, -260, 20.100006, -262, 23, -262, 25.399994, -277, 31.5, -277, 35.200012, -265.1, 46, -264.2, 46, -255, 58, -255, 59.299988, -246, 66, -244.2, 66, -225, 85.20001, -225, 86.399994, -201.9, 100, -199.2, 100, -196.2, 103, -198.3, 103, -200.2, 106, -201.4, 106, -202.3, 107.70001, -199.2, 111.79999, -207, 117.79999, -207, 129.29999, -139, 177.20001, -139, 179.9, -133.2, 177, -129.1, 177, -105, 163, -104.2, 163, -103, 164.79999, -103, 166.29999, -88.899994, 175, -86.100006, 175, -75, 185.1, -75, 186.5, -61.800003, 192, -58.899994, 192, -50, 198, -48, 198, -33, 209.20001, -33, 210.40002, -29.899994, 212, -25.899994, 212, -17, 218, -15, 218, 6, 235.20001, 6, 236.40002, 33, 251.29999, 33, 252.40002, 34.600006, 253.29999, 102.399994, 204.29999, 100, 213.29999, 100, 214.40002, 94.5, 216, 89.899994, 216, 82.79999, 223, 80.600006, 223, 82, 228.90002, 82, 239.79999, 86, 248.79999, 86, 252.29999, 96, 259, 103.79999, 259, 109, 265, 109, 266.8, 115, 267.7, 115, 269, 126.100006, 269, 128.20001, 267, 129.79999, 267, 138, 277, 138, 279, 151.20001, 279, 175, 291.3, 175, 293, 181.1, 293, 205.09998, 271, 206, 271, 206, 279.3, 209, 281.2, 209, 282.40002, 214.09998, 285, 217.20001, 285, 222.29999, 279, 223.20001, 279, 234.09998, 285, 235.79999, 285, 237, 286.2, 237, 292.3, 246.09998, 298, 252.09998, 298, 259.2, 291, 261, 291, 261, 281.2, 267, 276.2, 267, 275.09998, 295, 251.20001, 295, 250.40002, 295.59998, 250, 296.59998, 252, 303.09998, 252, 308.2, 247, 310, 247, 310, 224, 313, 220, 313, 215.90002, 309, 211.79999, 309, 210.40002, 292.59998, 204.59998, 296, 202, 297.5, 202, 300.5, 194, 302, 194, 302, 180.1, 296, 170.1, 313.09998, 155, 313.5, 103.600006, 311, 102, 308.2, 102, 302, 95.79999, 302, 94.29999, 297, 93.20001, 297, 91.899994, 284.40002, 93, 280.90002, 93, 278, 91, 276.3, 91, 271.3, 85.100006, 273, 83, 273, 82.20001, 287.90002, 72, 290, 72, 313.5, 52.600006, 313.5, 48.299988, 304, 43.600006, 304, 42.5, 263.8, 27, 261.90002, 27, 260.90002, 16, 260, 16, 262, -55.5, 262, -66.5, 274.90002, -72, 278, -72, 285, -77, 287.3, -77, 296.3, -90, 298.3, -90, 297, -97.7, 297, -100.3, 294, -102.3, 294, -104.899994, 285.5, -100.7, 284.90002, -101, 280.7, -101, 199.79999, -129, 198, -129, 198, -133.3, 195, -135.3, 195, -137, 189.70001, -137, 187.79999, -134, 184.70001, -134, 129.79999, -153, 128, -153, 128, -154, 126.600006, -154, 127, -155.3, 127, -160.1, 123, -164.2, 123, -166, 116.79999, -166, 113.79999, -162, 113.20001, -162, 82, -208.9, 82, -212.1, 78.100006, -216, 77.20001, -216, 76, -217.9, 76, -221.1, 69.20001, -229, 68.29999, -229, 48.299988, -260, 46.799988, -267, 46.700012, -268, 48.299988, -268, 47, -275.7, 47, -278.2, 39.100006, -285, 35.899994, -285, 31.799988, -281, 30, -281, 30, -279, 24, -284.2, 24, -286, 15.200012, -286, 13, -288.2, 13, -290.9, 9.399994, -289.2, 5, -298.9)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=212225226]
+position = Vector2(-5.865097e-05, 6.365776e-05)
+scale = Vector2(1.6331736, 1.6331738)
+polygon = PackedVector2Array(-141.1, 176.70001, -143, 177.5, -143, 178.70001, -146, 180.70001, -146, 184.1, -143.1, 187, -139.7, 187, -137.8, 184, -136.5, 184, -135.7, 182.1)

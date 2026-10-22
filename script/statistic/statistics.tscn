@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://ewme6sdbnd5p"]
+
+[ext_resource type="Script" uid="uid://xlji8oqs4ga8" path="res://script/statistic/statistics.gd" id="1_faa7q"]
+
+[node name="Statistics" type="Control" unique_id=1283216310]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_faa7q")
+
+[node name="Background" type="ColorRect" parent="." unique_id=322017406]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1917649757]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=608321936]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1842048931]
+layout_mode = 2
+text = "Statistik Petualangan"
+
+[node name="LevelProgress" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1648894546]
+layout_mode = 2
+
+[node name="StarsProgress" type="Label" parent="MarginContainer/VBoxContainer" unique_id=734077688]
+layout_mode = 2
+
+[node name="ScoreProgress" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1300984163]
+layout_mode = 2
+
+[node name="LevelList" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1367192586]
+layout_mode = 2
+
+[node name="Level1" type="Label" parent="MarginContainer/VBoxContainer/LevelList" unique_id=921896769]
+layout_mode = 2
+
+[node name="Level2" type="Label" parent="MarginContainer/VBoxContainer/LevelList" unique_id=1553715276]
+layout_mode = 2
+
+[node name="Level3" type="Label" parent="MarginContainer/VBoxContainer/LevelList" unique_id=1865800375]
+layout_mode = 2
+
+[node name="Level4" type="Label" parent="MarginContainer/VBoxContainer/LevelList" unique_id=1871920641]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1262901517]
+layout_mode = 2
+text = "Kembali"

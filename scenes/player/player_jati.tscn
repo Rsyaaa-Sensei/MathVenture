@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://daplayerjati"]
+
+[ext_resource type="Script" uid="uid://cbjha08w45if7" path="res://script/player/player.gd" id="1_player"]
+[ext_resource type="SpriteFrames" uid="uid://d4jatiframes" path="res://assets/images/player/jati_frames.tres" id="2_jati"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_player"]
+radius = 7.7999997
+height = 34.285713
+
+[node name="Player" type="CharacterBody2D" unique_id=2128794808]
+script = ExtResource("1_player")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1746081403]
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("2_jati")
+animation = &"idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=409309895]
+position = Vector2(-1.0000001, -0.9999999)
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CapsuleShape2D_player")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=279618114]
+position = Vector2(-3.055, 0)

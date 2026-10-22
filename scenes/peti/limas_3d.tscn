@@ -1,0 +1,211 @@
+[gd_scene load_steps=4 format=3 uid="uid://blimas3dscn"]
+
+[ext_resource type="Script" path="res://script/peti/limas_3d.gd" id="1_limas3d"]
+[ext_resource type="PackedScene" uid="uid://de172n6j8m3dp" path="res://assets/images/objects/iwel_iwel_limas.glb" id="2_limas"]
+
+[sub_resource type="Environment" id="Environment_limas"]
+background_mode = 1
+background_color = Color(0.93, 0.85, 0.68, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
+
+[node name="LimasExplore3D" type="Node3D"]
+script = ExtResource("1_limas3d")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_limas")
+
+[node name="LimasPivot" type="Node3D" parent="."]
+
+[node name="limas_objek" parent="." instance=ExtResource("2_limas")]
+
+[node name="Net" type="Node3D" parent="."]
+visible = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Hud" type="Control" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="UI/Hud"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 150.0
+offset_top = 14.0
+offset_right = -150.0
+offset_bottom = 86.0
+grow_horizontal = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ProgressLabel" type="Label" parent="UI/Hud"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 90.0
+offset_bottom = 126.0
+grow_horizontal = 2
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="UI/Hud"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 132.0
+offset_bottom = 64.0
+text = "Kembali"
+
+[node name="QuizRow" type="HBoxContainer" parent="UI/Hud"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -370.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ActionRow" type="HBoxContainer" parent="UI/Hud"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -295.0
+offset_bottom = -230.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+alignment = 1
+
+[node name="BtnBongkar" type="Button" parent="UI/Hud/ActionRow"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "Bongkar Kue"
+
+[node name="BtnSelesai" type="Button" parent="UI/Hud/ActionRow"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(170, 60)
+layout_mode = 2
+text = "Selesai"
+
+[node name="DialogPanel" type="PanelContainer" parent="UI/Hud"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -22.0
+offset_right = -16.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogLabel" type="Label" parent="UI/Hud/DialogPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 3
+autowrap_mode = 3
+
+[node name="RewardLayer" type="Control" parent="UI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="UI/RewardLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.015, 0.01, 0.72)
+
+[node name="Center" type="CenterContainer" parent="UI/RewardLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RewardPanel" type="PanelContainer" parent="UI/RewardLayer/Center"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="UI/RewardLayer/Center/RewardPanel"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="RewardTitle" type="Label" parent="UI/RewardLayer/Center/RewardPanel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+text = "Selamat Telah Menyelesaikan Level 4"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RewardStars" type="Label" parent="UI/RewardLayer/Center/RewardPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "★ ★ ★"
+horizontal_alignment = 1
+
+[node name="RewardInfo" type="Label" parent="UI/RewardLayer/Center/RewardPanel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+text = "Kamu berhasil menguasai bangun ruang Limas Segiempat!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="UI/RewardLayer/Center/RewardPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="RewardNext" type="Button" parent="UI/RewardLayer/Center/RewardPanel/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 56)
+layout_mode = 2
+text = "Menu Utama"
+
+[node name="RewardMenu" type="Button" parent="UI/RewardLayer/Center/RewardPanel/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 56)
+layout_mode = 2
+text = "Pilih Level"

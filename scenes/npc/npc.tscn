@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c130x6wc2j5xd"]
+
+[ext_resource type="Script" uid="uid://m66u14le4xj6" path="res://script/npc/npc.gd" id="1_sspvn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8eh50"]
+radius = 1.9650655
+height = 10.503282
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8av1"]
+
+[node name="NPC" type="CharacterBody2D" unique_id=944825383]
+script = ExtResource("1_sspvn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1553977221]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702391454]
+scale = Vector2(9.16, 9.14)
+shape = SubResource("CapsuleShape2D_8eh50")
+
+[node name="TalkArea" type="Area2D" parent="." unique_id=1126259747]
+scale = Vector2(10.055, 10.055)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TalkArea" unique_id=137467318]
+scale = Vector2(4.805, 4.805)
+shape = SubResource("CapsuleShape2D_q8av1")

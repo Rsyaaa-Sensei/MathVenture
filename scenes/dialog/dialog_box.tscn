@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://daho8r7amnaqg"]
+
+[ext_resource type="Script" uid="uid://b7eig0gxr8mnq" path="res://script/dialog/dialog_box.gd" id="1_hlclf"]
+[ext_resource type="FontFile" uid="uid://c65a27s4cfgc6" path="res://assets/font/BoldPixels.ttf" id="2_o6ajn"]
+
+[node name="DialogBox" type="CanvasLayer" unique_id=752268297]
+layer = 10
+script = ExtResource("1_hlclf")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1001015901]
+custom_minimum_size = Vector2(360, 0)
+offset_right = 360.0
+offset_bottom = 40.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=342020254]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="Panel/VBox" unique_id=915138726]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o6ajn")
+theme_override_font_sizes/font_size = 22
+
+[node name="TextLabel" type="Label" parent="Panel/VBox" unique_id=1595921223]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o6ajn")
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="NextButton" type="Button" parent="Panel/VBox" unique_id=134391863]
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("2_o6ajn")
+text = "Lanjut >"

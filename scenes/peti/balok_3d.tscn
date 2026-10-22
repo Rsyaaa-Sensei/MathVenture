@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://b1kv2o3balok"]
+
+[ext_resource type="Script" uid="uid://baxo25lhuhnma" path="res://script/peti/balok_3d.gd" id="1_balok3d"]
+[ext_resource type="PackedScene" uid="uid://b8ixo7im11td7" path="res://assets/images/objects/balok objek untuk level 2.glb" id="2_balok"]
+
+[sub_resource type="Environment" id="Environment_balok"]
+background_mode = 1
+background_color = Color(0.93, 0.85, 0.68, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
+
+[node name="BalokExplore3D" type="Node3D" unique_id=1974193508]
+script = ExtResource("1_balok3d")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2045088231]
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2057349805]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1721104038]
+environment = SubResource("Environment_balok")
+
+[node name="BoxPivot" type="Node3D" parent="." unique_id=858672655]
+
+[node name="balok_objek" parent="." unique_id=327641408 instance=ExtResource("2_balok")]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0)
+
+[node name="Net" type="Node3D" parent="." unique_id=1825734235]
+visible = false
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1590593491]
+
+[node name="Hud" type="Control" parent="UI" unique_id=1403762405]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="UI/Hud" unique_id=1722005279]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 150.0
+offset_top = 14.0
+offset_right = -150.0
+offset_bottom = 70.0
+grow_horizontal = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ProgressLabel" type="Label" parent="UI/Hud" unique_id=1879584798]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 76.0
+offset_bottom = 112.0
+grow_horizontal = 2
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="UI/Hud" unique_id=1189719348]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 132.0
+offset_bottom = 64.0
+text = "Kembali"
+
+[node name="QuizRow" type="HBoxContainer" parent="UI/Hud" unique_id=1828694810]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -370.0
+offset_bottom = -259.99976
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ActionRow" type="HBoxContainer" parent="UI/Hud" unique_id=665753682]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -349.955
+offset_bottom = -284.9552
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+alignment = 1
+
+[node name="BtnBongkar" type="Button" parent="UI/Hud/ActionRow" unique_id=150130191]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(170, 60)
+layout_mode = 2
+text = "Bongkar Kotak"
+
+[node name="BtnSelesai" type="Button" parent="UI/Hud/ActionRow" unique_id=2044506658]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(170, 60)
+layout_mode = 2
+text = "Selesai"
+
+[node name="DialogPanel" type="PanelContainer" parent="UI/Hud" unique_id=1050193962]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -22.0
+offset_right = -16.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogLabel" type="Label" parent="UI/Hud/DialogPanel" unique_id=746639457]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+autowrap_mode = 3
+
+[node name="RewardLayer" type="Control" parent="UI" unique_id=1430097333]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="UI/RewardLayer" unique_id=615345528]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.015, 0.01, 0.72)
+
+[node name="Center" type="CenterContainer" parent="UI/RewardLayer" unique_id=1296181898]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RewardPanel" type="PanelContainer" parent="UI/RewardLayer/Center" unique_id=925744404]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="UI/RewardLayer/Center/RewardPanel" unique_id=938375819]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="RewardTitle" type="Label" parent="UI/RewardLayer/Center/RewardPanel/VBox" unique_id=1465345825]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+text = "Selamat Telah Menyelesaikan Level 2"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RewardStars" type="Label" parent="UI/RewardLayer/Center/RewardPanel/VBox" unique_id=843839430]
+unique_name_in_owner = true
+layout_mode = 2
+text = "★ ★ ★"
+horizontal_alignment = 1
+
+[node name="RewardInfo" type="Label" parent="UI/RewardLayer/Center/RewardPanel/VBox" unique_id=1420833408]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+text = "Kamu berhasil menguasai bangun ruang Balok!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="UI/RewardLayer/Center/RewardPanel/VBox" unique_id=829821850]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="RewardNext" type="Button" parent="UI/RewardLayer/Center/RewardPanel/VBox/Buttons" unique_id=1529184944]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 56)
+layout_mode = 2
+text = "Menu Utama"
+
+[node name="RewardMenu" type="Button" parent="UI/RewardLayer/Center/RewardPanel/VBox/Buttons" unique_id=535245525]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 56)
+layout_mode = 2
+text = "Pilih Level"
